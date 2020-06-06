@@ -1,11 +1,42 @@
 <!--index.wxml-->
-<view class="container">
-  <!-- 用户 openid -->
-  <van-tag>标签</van-tag>
-<van-tag type="primary">标签</van-tag>
-<van-tag type="success">标签</van-tag>
-<van-tag type="danger">标签</van-tag>
-<van-tag type="warning">标签</van-tag>
-
-
+<view>
+<van-card
+  num="500"
+  price="3.00"
+  desc="地址: 成都市宽窄巷子"
+  tag="标签"
+  title="宽窄巷子卖矿泉水"
+  thumb-mode="cover"
+  thumb="https://wx3.sinaimg.cn/mw690/79942c81ly1gfhubg9zkaj20sg0izwj2.jpg"
+>
+  <view slot="footer">
+    <van-button size="mini">查看详情</van-button>
+  </view>
+</van-card>
+<van-card
+  num="500"
+  price="3.00"
+  desc="地址: 成都市宽窄巷子"
+  tag="标签"
+  title="宽窄巷子卖矿泉水"
+  thumb-mode="cover"
+  thumb="https://wx3.sinaimg.cn/mw690/79942c81ly1gfhubg9zkaj20sg0izwj2.jpg"
+>
+  <view slot="footer">
+    <van-button size="mini">查看详情</van-button>
+  </view>
+</van-card>
+<van-card
+  num="500"
+  price="3.00"
+  desc="地址: 成都市宽窄巷子"
+  tag="标签"
+  title="宽窄巷子卖矿泉水"
+  thumb-mode="cover"
+  thumb="https://wx3.sinaimg.cn/mw690/79942c81ly1gfhubg9zkaj20sg0izwj2.jpg"
+>
+  <view slot="footer">
+    <van-button size="mini">查看详情</van-button>
+  </view>
+</van-card>
 </view>
