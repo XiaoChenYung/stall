@@ -1,15 +1,17 @@
 <!--index.wxml-->
 <view>
-	<view wx:for="{{ list }}" wx:key="{{ item._id }}">
+<van-toast id="van-toast" />
+	<view wx:for="{{ list }}" wx:key="index">
 		<view class="section"></view>
-		<van-card num="{{ item.count }}" price="{{ item.price }}.00" desc="地址: {{ item.loc }}" title="{{ item.title }}" thumb-mode="cover" thumb="{{ item.image }}">
+		<!-- 地址: {{ item.address }} -->
+		<van-card num="{{ item.count }}" price="{{ item.price }}.00" desc="" title="{{ item.title }}" thumb-mode="cover" thumb="{{ item.image }}">
 			<view slot="tags">
 				<van-tag wx:if="{{ item.tags.length == 1 }}" round type="warning">{{item.tags[0]}}</van-tag>
 				<van-tag wx:if="{{ item.tags.length == 2 }}" round type="danger">{{item.tags[0]}}</van-tag>
 				<van-tag wx:if="{{ item.tags.length == 2 }}" round type="warning">{{item.tags[1]}}</van-tag>
 			</view>
 			<view slot="footer">
-				<van-button size="mini">查看详情</van-button>
+				<!-- <van-button size="mini">查看详情</van-button> -->
 			</view>
 		</van-card>
 	</view>

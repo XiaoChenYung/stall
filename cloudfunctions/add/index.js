@@ -10,12 +10,12 @@ exports.main = async (event, context) => {
     // data 字段表示需新增的 JSON 数据
     data: {
       title: event.title,
-      loc: event.loc,
+      address: event.address,
       count: event.count,
       price: event.price,
       tags: event.tags,
       image: event.image,
-      des: event.des
+      desc: event.desc
     }
   })
 }

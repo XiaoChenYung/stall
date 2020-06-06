@@ -1,4 +1,6 @@
 // miniprogram/pages/add/index.js
+import Notify from '@vant/weapp/notify/notify';
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -6,30 +8,105 @@ Page({
    */
   data: {
     fileList: [],
+    title: "",
+    address: "",
+    count: "",
+    price: "",
+    desc: "",
     tags:["口感好","便宜","纯手工","回头客多","好评如潮","资深摆摊客","好玩"],
+    image: "",
     result: []
   },
   afterRead(event) {
     const { file } = event.detail;
-    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-    wx.uploadFile({
-      url: 'https://example.weixin.qq.com/upload', // 仅为示例，非真实的接口地址
-      filePath: file.path,
-      name: 'file',
-      formData: { user: 'test' },
-      success(res) {
-        // 上传完成需要更新 fileList
-        const { fileList = [] } = this.data;
-        fileList.push({ ...file, url: res.data });
-        this.setData({ fileList });
-      },
-    });
+    console.log(file)
+    wx.cloud.uploadFile({
+      cloudPath: guid() + '.png',
+      filePath: file.path
+    })
+    .then(res => {
+      console.log(res)
+      console.log([res.fileID])
+      this.setData({
+        image: res.fileID,
+        fileList: [res.fileID]
+      })
+    })
   },
 
   onChange(event) {
     this.setData({
       result: event.detail
     });
+  },
+
+  onTitleChange(event) {
+    this.setData({
+      title: event.detail
+    });
+  },
+
+  onAddreessChange(event) {
+    this.setData({
+      address: event.detail
+    });
+  },
+
+  onPriceChange(event) {
+    this.setData({
+      price: event.detail
+    });
+  },
+
+  onCountChange(event) {
+    this.setData({
+      count: event.detail
+    });
+  },
+
+  onPushClick(event) {
+    console.log(event, this.data)
+    if (this.data.image.length < 3) {
+      Notify({ type: 'warning', message: '需要上传商品主图' });
+      return;
+    }
+    if (this.data.title.length < 3) {
+      Notify({ type: 'warning', message: '标题需多于三个字' });
+      return;
+    }
+    if (this.data.address.length < 3) {
+      Notify({ type: 'warning', message: '摊位地点需多于三个字' });
+      return;
+    }
+    if (this.data.price.length == 0) {
+      Notify({ type: 'warning', message: '请填写主要商品单价' });
+      return;
+    }
+    if (this.data.count.length == 0) {
+      Notify({ type: 'warning', message: '请填写主要商品库存' });
+      return;
+    }
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'add',
+      data: {
+        title: this.data.title,
+        address: this.data.address,
+        count: this.data.count,
+        price: this.data.price,
+        tags: this.data.result,
+        image: this.data.image,
+        desc: this.data.desc
+      },
+    })
+    .then(res => {
+      Toast.success('发布成功');
+      setTimeout(() => {
+        wx.switchTab({
+          url: '../index/index',
+        })
+      }, 1);
+    })
   },
 
   /**
@@ -88,3 +165,11 @@ Page({
 
   }
 })
+
+//用于生成uuid
+function S4() {
+  return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+}
+function guid() {
+  return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}

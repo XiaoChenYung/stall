@@ -9,5 +9,5 @@ page {
   font-size: medium;
 }
 .section {
-  height: 5px;
+  height: 10px;
 }

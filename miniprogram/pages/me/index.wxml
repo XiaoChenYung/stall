@@ -1,7 +1,7 @@
 <!--miniprogram/pages/me/index.wxml-->
 <view>
 	<van-cell-group>
-		<van-cell icon="location-o" is-link title="发布摆摊" link-type="navigateTo" url="../add/index" />
-    <van-cell icon="location-o" is-link title="我的发布" link-type="navigateTo" url="../my/index" />
+		<van-cell icon="location-o" is-link title="发布摊位" link-type="navigateTo" url="../add/index" />
+    <!-- <van-cell icon="location-o" is-link title="我的发布" link-type="navigateTo" url="../my/index" /> -->
 	</van-cell-group>
 </view>
