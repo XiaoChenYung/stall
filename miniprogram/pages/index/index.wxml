@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 用户 openid -->
+  <van-tag>标签</van-tag>
+<van-tag type="primary">标签</van-tag>
+<van-tag type="success">标签</van-tag>
+<van-tag type="danger">标签</van-tag>
+<van-tag type="warning">标签</van-tag>
+
+
+</view>
