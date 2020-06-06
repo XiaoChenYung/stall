@@ -1,7 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/me/index"
+    "pages/me/index",
+    "pages/add/index",
+    "pages/my/index",
+    "pages/detail/index"
   ],
   "tabBar": {
     "color": "#6e6d6b",

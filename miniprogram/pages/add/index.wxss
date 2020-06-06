@@ -1,0 +1,5 @@
+/* miniprogram/pages/add/index.wxss */
+.header {
+  color: "#ff0000";
+  font-size: medium;
+}

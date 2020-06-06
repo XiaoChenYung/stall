@@ -1,0 +1,36 @@
+<!--miniprogram/pages/add/index.wxml-->
+<view>
+	<view class="section"></view>
+	<!-- <van-cell-group> -->
+	<view class="section"></view>
+	<van-cell required title="商品主图">
+		<view slot="right-icon">
+			<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+		</view>
+	</van-cell>
+	<!-- </van-cell-group> -->
+	<!-- <van-cell-group> -->
+	<view class="section"></view>
+	<van-field label="标题" required value="{{ title }}" placeholder="地摊主要经营的产品" />
+	<van-field label="地点" required value="{{ address }}" placeholder="地摊所在地点" />
+	<van-field label="单价" required value="{{ price }}" placeholder="主要商品单价" />
+	<van-field label="库存" required value="{{ address }}" placeholder="主要产品库存" />
+	<!-- </van-cell-group> -->
+	<!-- <van-cell-group> -->
+	<view class="section"></view>
+	<van-cell use-label-slot value="最多选两个" title="商品标签">
+		<view slot="label">
+			<van-checkbox-group value="{{ result }}" bind:change="onChange" max="{{ 2 }}">
+				<van-checkbox wx:for="{{ tags }}" wx:key="index" checked-color="#ffd02e" name="{{item}}">{{item}}</van-checkbox>
+			</van-checkbox-group>
+		</view>
+	</van-cell>
+	<van-field value="{{ message }}" label="简介" type="textarea" placeholder="简单介绍一下自己的摊位" autosize />
+	<view style="height: 150px;"></view>
+	<van-goods-action>
+		<van-goods-action-icon url="../my/index" icon="label-o" text="我的发布" />
+    <van-goods-action-icon open-type="contact" icon="chat-o" text="咨询客服" />
+		<van-goods-action-button plain color="#ffd02e" text="立即发布" />
+	</van-goods-action>
+	<!-- </van-cell-group> -->
+</view>

@@ -1,42 +1,16 @@
 <!--index.wxml-->
 <view>
-<van-card
-  num="500"
-  price="3.00"
-  desc="地址: 成都市宽窄巷子"
-  tag="标签"
-  title="宽窄巷子卖矿泉水"
-  thumb-mode="cover"
-  thumb="https://wx3.sinaimg.cn/mw690/79942c81ly1gfhubg9zkaj20sg0izwj2.jpg"
->
-  <view slot="footer">
-    <van-button size="mini">查看详情</van-button>
-  </view>
-</van-card>
-<van-card
-  num="500"
-  price="3.00"
-  desc="地址: 成都市宽窄巷子"
-  tag="标签"
-  title="宽窄巷子卖矿泉水"
-  thumb-mode="cover"
-  thumb="https://wx3.sinaimg.cn/mw690/79942c81ly1gfhubg9zkaj20sg0izwj2.jpg"
->
-  <view slot="footer">
-    <van-button size="mini">查看详情</van-button>
-  </view>
-</van-card>
-<van-card
-  num="500"
-  price="3.00"
-  desc="地址: 成都市宽窄巷子"
-  tag="标签"
-  title="宽窄巷子卖矿泉水"
-  thumb-mode="cover"
-  thumb="https://wx3.sinaimg.cn/mw690/79942c81ly1gfhubg9zkaj20sg0izwj2.jpg"
->
-  <view slot="footer">
-    <van-button size="mini">查看详情</van-button>
-  </view>
-</van-card>
+	<view wx:for="{{ list }}" wx:key="{{ item._id }}">
+		<view class="section"></view>
+		<van-card num="{{ item.count }}" price="{{ item.price }}.00" desc="地址: {{ item.loc }}" title="{{ item.title }}" thumb-mode="cover" thumb="{{ item.image }}">
+			<view slot="tags">
+				<van-tag wx:if="{{ item.tags.length == 1 }}" round type="warning">{{item.tags[0]}}</van-tag>
+				<van-tag wx:if="{{ item.tags.length == 2 }}" round type="danger">{{item.tags[0]}}</van-tag>
+				<van-tag wx:if="{{ item.tags.length == 2 }}" round type="warning">{{item.tags[1]}}</van-tag>
+			</view>
+			<view slot="footer">
+				<van-button size="mini">查看详情</van-button>
+			</view>
+		</van-card>
+	</view>
 </view>
